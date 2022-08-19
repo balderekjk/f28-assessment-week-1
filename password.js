@@ -1,6 +1,8 @@
 let password = 'disIs1pswd!';
 // check length >= 10 and < 20
 let pwLengthCheck = 1;
+// check if pw is forbidden
+let pwBogusCheck = 0;
 // check if there is number
 let pwNumCheck = 0;
 // check if there is letter
@@ -28,6 +30,11 @@ if (password.length > 20) {
   console.log('Password is too long, over 20 characters');
 }
 
+if (password === 'password' || password === 'letmein') {
+  pwBogusCheck = 1;
+  console.log('Password not secure enough, choose another');
+}
+
 for (let i = 0; i < password.length; i++) {
   if (regexLetter.test(password[i]) === true) {
     pwLetterCheck = 1;
@@ -47,6 +54,7 @@ for (let i = 0; i < password.length; i++) {
 }
 if (
   pwLengthCheck === 1 &&
+  pwBogusCheck === 0 &&
   pwLetterCheck === 1 &&
   pwNumCheck === 1 &&
   pwUpperCaseCheck === 1 &&
